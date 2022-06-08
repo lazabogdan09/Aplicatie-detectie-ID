@@ -1,0 +1,20 @@
+<form style="text-align: center">
+  <label for="imageUpload">Select a file:</label><br>
+  <input type="file"  (change)="selectFile($event)" id="imageUpload" name="myfile">
+  <input type="button" onclick="alert('action')" value="Submit"><br><br>
+</form>
+
+<div style="text-align: center">
+  <div [innerHtml]='msg' *ngIf="msg" style="color: red;"></div>
+  <div><img id="imagePreview" [src]="url2" *ngIf="url2" width="345"></div>
+  <div id="label-container"></div>
+</div>
+
+
+<div style="display: flex; justify-content: center; align-items: center; width: height: 80vh" fxLayout="column">
+  <ul style="width: 600px">
+    <li *ngFor="let item of predictions"><label>{{item.className}}:</label>
+      <mat-progress-bar mode="determinate" [value]="item.probability*100"></mat-progress-bar>
+    </li>
+  </ul>
+</div>

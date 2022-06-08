@@ -1,0 +1,30 @@
+<form>
+  <mat-form-field appearance="fill">
+    <mat-label>First name</mat-label>
+    <input matInput>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Last Name</mat-label>
+    <input matInput>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Enter your email</mat-label>
+    <input matInput placeholder="pat@example.com" [formControl]="email" required>
+    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Input type</mat-label>
+    <mat-select [(value)]="selected">
+      <mat-option value="web">Webcam</mat-option>
+      <mat-option value="upload">File</mat-option>
+    </mat-select>
+  </mat-form-field>
+</form>
+
+<ng-container *ngIf="selected=='upload'">
+  <app-upload-file></app-upload-file>
+</ng-container>
+<ng-container *ngIf="selected=='web'">
+  <app-webcam></app-webcam>
+</ng-container>

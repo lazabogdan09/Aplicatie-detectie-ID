@@ -1,0 +1,14 @@
+<div *ngIf="loading" style="display: flex;   justify-content: center; align-items: center; height: calc(100vh - 20px);">
+  <mat-spinner fxLayoutAlign="center center"></mat-spinner>
+</div>
+
+<div style="display: flex; justify-content: center; align-items: center; width: height: 80vh" fxLayout="column">
+
+  <div #video id="webcam-container"></div>
+
+  <ul style="width: 600px">
+    <li *ngFor="let item of predictions"><label>{{item.className}}:</label>
+      <mat-progress-bar mode="determinate" [value]="item.probability*100"></mat-progress-bar>
+    </li>
+  </ul>
+</div>
